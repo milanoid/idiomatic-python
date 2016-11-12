@@ -56,8 +56,11 @@ def enter_ticket():
 @app.route('/ticket/<int:ticket_id>')
 def display_ticket(ticket_id):
     """Display the details of the ticket with id *ticket_id*."""
-    return 'display_ticket({ticket_id})'.format(ticket_id=ticket_id)
-
+    connection = sqlite3.connect('db.sqlite3')
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM Ticket WHERE id={ticket_id}'.format(ticket_id=ticket_id))
+    ticket = cursor.fetchone()
+    return render_template('detail.html', ticket=ticket)
 
 if __name__ == '__main__':
     app.run(debug=True)
