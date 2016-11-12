@@ -17,3 +17,4 @@ Allows user to view a list of existing tickets and create a new ticket.
 
 - [ ] use SQLAlchemy instead raw SQL commands
 - [ ] implement `/ticket` and `/ticket/<int:ticket_id>`
+- [ ] use css for templates
