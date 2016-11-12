@@ -31,7 +31,7 @@ def enter_ticket():
     return 'enter_ticket'
 
 
-@app.route('/ticket/<ticket_id>')
+@app.route('/ticket/<int:ticket_id>')
 def display_ticket(ticket_id):
     """Display the details of the ticket with id *ticket_id*."""
     return 'display_ticket({ticket_id})'.format(ticket_id=ticket_id)
