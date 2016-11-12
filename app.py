@@ -14,7 +14,9 @@ date_created DATE NOT NULL);
 COMMIT;
 """
 
-from flask import Flask
+import sqlite3
+from flask import Flask, render_template
+
 
 app = Flask(__name__)
 
@@ -22,7 +24,11 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def list_tickets():
     """Display a list of tickets in the system."""
-    return 'list_tickets'
+    connection = sqlite3.connect('db.sqlite3')
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM Ticket')
+    all_tickets = cursor.fetchall()
+    return render_template('index.html', tickets=all_tickets)
 
 
 @app.route('/ticket', methods=['GET', 'POST'])
