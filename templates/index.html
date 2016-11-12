@@ -1,5 +1,6 @@
 <html>
  <body>
+ 	{% block content %}
 	<h1>Open tickets</h1>
 	<ul>
 	 {% for ticket in tickets %}
@@ -11,6 +12,6 @@
 	 {% endfor %}
 	</ul>
 	<p><a href="{{ url_for('enter_ticket') }}">Create ticket</a></p>
-	
+	{% endblock content %}
  </body>
 </html>

@@ -15,7 +15,7 @@ COMMIT;
 """
 
 import sqlite3
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -33,8 +33,8 @@ def list_tickets():
 
 @app.route('/ticket', methods=['GET', 'POST'])
 def enter_ticket():
-    """Enter a new ticket via a form."""
-    return 'enter_ticket'
+    if request.method == 'GET':
+        return render_template('edit.html')
 
 
 @app.route('/ticket/<int:ticket_id>')
